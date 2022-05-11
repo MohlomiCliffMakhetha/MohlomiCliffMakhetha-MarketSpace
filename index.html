@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">    
+        <style>
+            /*/////////////////////////////////////////////FrontPageCSS*/
+            .container {
+                position: relative;
+                width: 100%;
+                max-width: 1023px;
+                height: 100%;
+                margin: 0 auto;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .topnav {
+                overflow: hidden;
+                background-color: #2196F3;
+            }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 5px 20px;
+                text-decoration: none;
+                font-size: 20px;
+            }
+
+            .topnav a:hover {
+                background-color: #99ffcc;
+                color: black;
+            }
+
+            .topnav a.active {
+                background-color: white;
+                color: white;
+            }
+            .item1 { grid-area: accommodation;
+                     position: relative;
+                     width: 33.3333%}
+            .item2 { grid-area: products;
+                     position: relative;
+                     width: 33.3333%}
+            .item3 { grid-area: services; 
+                     position: relative;
+                     width: 33.3333%}
+
+            .grid-container {
+                display: grid;
+                grid-template-areas:
+                    'accommodation products services';
+                background-color: #2196F3;
+                width: 100%;
+                max-width: 1023px;
+                max-height: 543px;
+            }
+            .window{
+                display: none;
+                max-width: 1023px;
+                max-height: 543px;}
+            .container .footer {
+                position: absolute;
+                width: 100%;
+                max-width: 1023px;
+                background-color: #2196F3;
+                color: white;
+                text-align: center;
+                font-family: Arial, Helvetica, sans-seri;
+            }
+            .container .header {
+                position:  relative;
+                width: 100%;
+                max-width: 1023px;
+                background-color: #2196F3;
+                color: white;
+                text-align: center;
+                margin: 0 auto;
+                font-family: Arial, Helvetica, sans-seri;
+            }
+            .item1 .button {
+                position: absolute;
+                top: 50%;
+                left: 35%;
+            }
+            .item2 .button1 {
+                position: absolute;
+                top: 50%;
+                left: 85%;
+            }
+            .item3 .button2 {
+                position: absolute;
+                top: 50%;
+                left: 85%;
+            }
+            /*/////////////////////////////////////////////LoginCSS*/
+            * {
+                box-sizing: border-box;
+            }
+            .loginPopup {
+                position: relative;
+                text-align: center;
+                width: 100%;
+            }
+            .formPopupLogin {
+                display: none;
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 9;
+            }
+            .formContainerLogin {
+                max-width: 1000px;
+                padding: 20px;
+                background-color: #0099cc;
+                opacity: 0.94;
+                color: floralwhite;
+            }
+            .formContainerLogin input[type=text],
+            .formContainerLogin input[type=password] {
+                width: 100%;
+                padding: 15px;
+                margin: 5px 0 20px 0;
+                border: none;
+                background: #eee;
+            }
+            .formContainerLogin input[type=text]:focus,
+            .formContainerLogin input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+            .formContainerLogin .btn {
+                padding: 12px 20px;
+                border: none;
+                background-color: #8ebf42;
+                color: #fff;
+                cursor: pointer;
+                width: 100%;
+                margin-bottom: 15px;
+                opacity: 0.8;
+            }
+            .formContainerLogin .cancel {
+                background-color: #cc0000;
+            }
+            .formContainerLogin .btn:hover,
+            .openButton:hover {
+                opacity: 1;
+            }
+            /*/////////////////////////////////////////////SignUpCSS*/
+            * {
+                box-sizing: border-box;
+            }
+            .SignUpPopup {
+                position: relative;
+                text-align: center;
+                width: 100%;
+            }
+            .formPopupSignUp {
+                display: none;
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 9;
+            }
+            .formContainerSignUp {
+                max-width: 1000px;
+                height: 360px;
+                padding: 20px;
+                background-color: #0099cc;
+                opacity: 0.94;
+                color: floralwhite;
+                overflow-y: scroll;
+            }
+            .formContainerSignUp input[type=text],
+            .formContainerSignUp input[type=password] {
+                width: 100%;
+                padding: 15px;
+                margin: 5px 0 20px 0;
+                border: none;
+                background: #eee;
+            }
+            .formContainerSignUp input[type=text]:focus,
+            .formContainerSignUp input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+            .formContainerSignUp .btn {
+                padding: 12px 20px;
+                border: none;
+                background-color: #8ebf42;
+                color: #fff;
+                cursor: pointer;
+                width: 100%;
+                margin-bottom: 15px;
+                opacity: 0.8;
+            }
+            .formContainerSignUp .cancel {
+                background-color: #cc0000;
+            }
+            .formContainerSignUp .btn:hover,
+            .openButton:hover {
+                opacity: 1;
+            }
+            /*///////////////////////////////////////////////////ScrollerCSS/*/
+            ::-webkit-scrollbar {
+                width: 3px;
+            }
+            ::-webkit-scrollbar-track {
+                box-shadow: inset 0 0 5px grey; 
+                border-radius: 5px;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #cccccc; 
+                border-radius: 2px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #b30000; 
+            }
+            /*/////////////////////////////////////////////SignUpProviderCSS*/
+            * {
+                box-sizing: border-box;
+            }
+            .SignUpProviderPopup {
+                position: relative;
+                text-align: center;
+                width: 100%;
+            }
+            .formSignUpProvider {
+                display: none;
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 9;
+            }
+            .backdrop {
+                position: fixed;
+                top: 0px;
+                left: 0px;
+                z-index: 999;
+                height: 100%;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.2);
+                display: none;
+            }
+            .formContainerSignUpProvider {
+                max-width: 1000px;
+                height: 360px;
+                padding: 20px;
+                background-color: #0099cc;
+                opacity: 0.94;
+                color: floralwhite;
+                overflow-y: scroll;
+            }
+            .formContainerSignUpProvider input[type=text],
+            .formContainerSignUpProvider input[type=password] {
+                width: 100%;
+                padding: 15px;
+                margin: 5px 0 20px 0;
+                border: none;
+                background: #eee;
+            }
+            .formContainerSignUpProvider input[type=text]:focus,
+            .formContainerSignUpProvider input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+            .formContainerSignUpProvider .btn {
+                padding: 12px 20px;
+                border: none;
+                background-color: #8ebf42;
+                color: #fff;
+                cursor: pointer;
+                width: 100%;
+                margin-bottom: 15px;
+                opacity: 0.8;
+            }
+            .formContainerSignUpProvider .cancel {
+                background-color: #cc0000;
+            }
+            .formContainerSignUpProvider .btn:hover,
+            .openButton:hover {
+                opacity: 1;
+            }
+        </style>
+        <script type = "text/javascript">
+            /*/////////////////////////////////////////////FrontPageScript*/
+            function accomodationNextImage() {
+                x = (x === accomodation.length - 1) ? 0 : x + 1;
+                document.getElementById("img").src = accomodation[x];
+            }
+            function productsNextImage() {
+                y = (y === products.length - 1) ? 0 : y + 1;
+                document.getElementById("img1").src = products[y];
+            }
+            function ServicesNextImage() {
+                z = (z === Services.length - 1) ? 0 : z + 1;
+                document.getElementById("img2").src = Services[z];
+            }
+            function startTimer() {
+                setInterval(accomodationNextImage, 8000);
+                setInterval(productsNextImage, 7000);
+                setInterval(ServicesNextImage, 9000);
+            }
+
+            var accomodation = [], x = -1;
+            accomodation[0] = "webPageImg/accomodation1.jpg";
+            accomodation[1] = "webPageImg/accomodation2.jpg";
+            accomodation[2] = "webPageImg/accomodation3.jpg";
+            accomodation[3] = "webPageImg/accomodation4.jpg";
+            accomodation[4] = "webPageImg/accomodation5.jpg";
+            var products = [], y = -1;
+            products[0] = "webPageImg/products1.jpg";
+            products[1] = "webPageImg/products2.jpg";
+            products[2] = "webPageImg/products3.jpg";
+            products[3] = "webPageImg/products4.jpg";
+            products[4] = "webPageImg/products5.jpg";
+            products[5] = "webPageImg/products6.jpg";
+            var Services = [], z = -1;
+            Services[0] = "webPageImg/Services1.jpg";
+            Services[1] = "webPageImg/Services2.jpg";
+            Services[2] = "webPageImg/Services3.jpg";
+            Services[3] = "webPageImg/Services4.jpg";
+            Services[4] = "webPageImg/Services5.jpg";
+            /*/////////////////////////////////////////////LoginPageScript*/
+            function openFormLogin() {
+                document.getElementById("popupFormLogin").style.display = "block";
+                document.getElementById("backdrop").style.display = "block";
+            }
+            function closeFormLogin() {
+                document.getElementById("popupFormLogin").style.display = "none";
+                document.getElementById("backdrop").style.display = "none";
+            }
+            /*/////////////////////////////////////////////SignUpPageScript*/
+            function openFormSignUp() {
+                document.getElementById("popupFormSignUp").style.display = "block";
+                document.getElementById("backdrop").style.display = "block";
+            }
+            function closeFormSignUp() {
+                document.getElementById("popupFormSignUp").style.display = "none";
+                document.getElementById("backdrop").style.display = "none";
+            }
+            /*/////////////////////////////////////////////SignUpProviderScript*/
+            function openFormSignUpProvider() {
+                document.getElementById("popupFormSignUpProvider").style.display = "block";
+                document.getElementById("backdrop").style.display = "block";
+            }
+            function closeFormSignUpProvider() {
+                document.getElementById("popupFormSignUpProvider").style.display = "none";
+                document.getElementById("backdrop").style.display = "none";
+            }
+            /*/////////////////////////////////////////////WindowScript*/
+            function openWindowAcco() {
+                document.getElementById("HomeWindow").style.display = "none";
+                document.getElementById("frame1").style.display = "block";
+                document.getElementById("ToolBarButtons").style.display = "none";
+            }
+            function openWindowProd() {
+                document.getElementById("HomeWindow").style.display = "none";
+                ;
+                document.getElementById("frame2").style.display = "block";
+                document.getElementById("ToolBarButtons").style.display = "none";
+            }
+            function openWindowServ() {
+                document.getElementById("HomeWindow").style.display = "none";
+                document.getElementById("frame3").style.display = "block";
+                document.getElementById("ToolBarButtons").style.display = "none";
+            }
+            function closeWindow() {
+                document.getElementById("frame1").style.display = "none";
+                document.getElementById("frame2").style.display = "none";
+                document.getElementById("frame3").style.display = "none";
+                document.getElementById("HomeWindow").style.display = "grid";
+                document.getElementById("homeIcon").setAttribute("src", "webPageImg/icon.PNG");
+                document.getElementById("ToolBarButtons").style.display = "block";
+            }
+            var check = function () {
+                if (document.getElementById('pswSignUpProvider').value ===
+                        document.getElementById('pswConfirmSignUpProvider').value) {
+                    document.getElementById('message').style.color = 'green';
+                    document.getElementById('message').innerHTML = 'matching';
+                } else {
+                    document.getElementById('message').style.color = 'red';
+                    document.getElementById('message').innerHTML = 'not matching';
+                }
+            };
+        </script>
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    </head>
+    <body class="container" onload = "startTimer()">
+        <div class="header">
+            <div class="topnav">
+                <a class="active" onclick="return closeWindow()"><img  id="homeIcon" src="webPageImg/icon.PNG" alt="Market space icon"/></a>
+                <div id="ToolBarButtons">
+                    <a href="http://localhost:8080/FrontPageMarketSpace/AboutBasicUserProviderManual.html">Guide Manual</a>
+                    <a onclick="return openFormSignUpProvider()">Become a provider</a>
+                    <a onclick="return openFormLogin()">Login provider</a>
+                </div>
+            </div>
+        </div>  
+        <div class="grid-container" id="HomeWindow">
+            <div class="item1">
+                <img id="img" src="webPageImg/accomodation1.jpg" alt="Accommodation images" width="341" height="543"/>
+                <button class="button" onclick="openWindowAcco()" style='font-size:35px;opacity: 0.6; color: #2196F3'>Accommodation <i class='fas fa-bed'></i></button>
+            </div>
+            <div class="item2">
+                <img id="img1" src="webPageImg/products1.jpg" alt="Product images" width="341" height="543"/>
+                <button class="button1" onclick="openWindowProd()" style='font-size:35px;opacity: 0.6; color: #2196F3'>Products <i class='fas fa-shopping-cart'></i></button>
+            </div>  
+            <div class="item3">
+                <img id="img2" src="webPageImg/Services1.jpg" alt="Services images" width="341" height="543"/>
+                <button class="button2" onclick="openWindowServ()" style='font-size:35px;opacity: 0.6; color: #2196F3'>Services <i class='fas fa-paint-roller'></i></button>
+            </div>
+        </div>
+        <div class="window" id="frame1">
+            <iframe  src="SearchEnginPageAccom.html" style="border:0px; width: 1023px; min-height: 543px;">
+            </iframe>
+        </div>
+        <div class="window" id="frame2">
+            <iframe  src="http://localhost:8080/FrontPageMarketSpace/SearchEnginPageProds.html" style="border:0px; width: 1023px; min-height: 543px;">
+            </iframe>
+        </div>
+        <div class="window" id="frame3">
+            <iframe  src="SearchEnginePagesServ.html" style="border:0px; width: 1023px; min-height: 543px;">
+            </iframe>
+        </div>
+        <div class="backdrop" id="backdrop">
+            <div class="formPopupLogin" id="popupFormLogin">
+                <form action="LoginPage" method="post" class="formContainerLogin">
+                    <label for="emailLogin">
+                        <strong>E-mail</strong>
+                    </label>
+                    <input type="text" id="emailLogin" placeholder="Your Email" name="emailLogin" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                    <label for="pswLogin">
+                        <strong>Password</strong>
+                    </label>
+                    <input type="password" id="pswLogin" placeholder="Your Password" name="pswLogin" required>
+                    <button type="submit" class="btn">Login</button>
+                    <button type="button" class="btn cancel" onclick="closeFormLogin()">Close</button>
+                    <a href="#">Forgot your Password?</a>
+                </form>
+            </div>
+            <div class="formSignUpProvider" id="popupFormSignUpProvider">
+                <form action="SignUpProvider_page" method="post" class="formContainerSignUpProvider">
+                    <label for="CompanyName">
+                        <strong>Business or Company Name</strong>
+                    </label>
+                    <input type="text" id="CompanyName" placeholder="Business or Company Name" name="CompanyName" required >
+                    <label>
+                        <strong>Type of Business (select one ore multiple)</strong><br><br>
+                    </label>
+                    <input type="radio" id="Accommodation" name="select" value="A" required>
+                    <label for="Accommodation">Accommodation</label><br>
+                    <input type="radio" id="Products" name="select" value="P" required>
+                    <label for="Products">Products and goods</label><br>
+                    <input type="radio" id="Services" name="select" value="S" required>
+                    <label for="Services">Services</label><br><br>
+                    <label for="FirstName">
+                        <strong>Provider's First Name</strong>
+                    </label>
+                    <input type="text" id="ProviderFirstName" placeholder="Your First Name" name="FirstName" required pattern="[A-Za-z]*">
+                    <label for="LastName">
+                        <strong>Provider's Last Name</strong>
+                    </label>
+                    <input type="text" id="ProviderLastName" placeholder="Your Last Name" name="LastName" required pattern="[A-Za-z]*">
+                    <label for="cell">
+                        <strong>Provider's Contact Number</strong>
+                    </label>
+                    <input type="text" id="Providercell" placeholder="e.g.(+27745641252 or 0745641252)" name="cell" required pattern="[0+]+[0-9]{9,}$">
+                    <label for="emailSignUpProvider">
+                        <strong>Provider's E-mail</strong>
+                    </label>
+                    <input type="text" id="emailSignUpProvider" placeholder="Your Email" name="emailSignUpProvider" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                    <label for="pswSignUpProvider">
+                        <strong>Create Password</strong>
+                    </label>
+                    <input type="password" id="pswSignUpProvider" placeholder="Your Password" name="pswSignUpProvider" onkeyup='check()' required>
+                    <label for="pswConfirmSignUpProvider">
+                        <strong>Confirm Password</strong>
+                    </label>
+                    <input type="password" id="pswConfirmSignUpProvider" placeholder="Confirm Your Password" name="pswConfirmSignUpProvider" onkeyup='check()' required>
+                    <span id='message'></span>
+                    <button type="submit" class="btn">Become a Provider</button>
+                    <button type="button" class="btn cancel" onclick="closeFormSignUpProvider()">Close</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Contact us on +27 11 456 8513 | marketspace@gmail.com  follow us on </p>
+            <a  href="https://www.facebook.com/"><img src="webPageImg/facebook.png" alt="facebook link" style="opacity: 0.3"/></a>
+            <a  href="https://twitter.com/?lang=en"><img src="webPageImg/twitter.png" alt="twitter link" style="opacity: 0.3"/></a>
+            <a  href="https://www.instagram.com/"><img src="webPageImg/instagram.png" alt="instagram link" style="opacity: 0.3"/></a>
+            <a  href="https://www.tiktok.com/"><img src="webPageImg/tiktok.png" alt="tiktok link" style="opacity: 0.3"/></a>
+            <a  href="https://www.youtube.com/"><img src="webPageImg/youtube.png" alt="youtube link" style="opacity: 0.3"/></a>
+        </div>
+    </body>
+</html>

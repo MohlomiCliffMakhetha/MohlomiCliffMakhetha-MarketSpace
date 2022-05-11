@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            /*/////////////////////////////////////////////FrontPageCSS*/
+            .container {
+                position: relative;
+                width: 100%;
+                max-width: 1023px;
+                height: 100%;
+                margin: 0 auto;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .topnav {
+                overflow: hidden;
+                background-color: #2196F3;
+            }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 5px 20px;
+                text-decoration: none;
+                font-size: 20px;
+            }
+
+            .topnav a:hover {
+                background-color: #99ffcc;
+                color: black;
+            }
+
+            .topnav a.active {
+                background-color: white;
+                color: white;
+            }
+            .item1 { grid-area: services;
+                     position: relative;
+                     width: 511px}
+            .item2 { grid-area: detailPage;
+                     position: relative;
+                     width: 512px;
+                     opacity: 0.8;
+                     padding: 5px;
+            }
+            #mydiv{ animation: changeBg 10s infinite;}
+            @keyframes changeBg{
+                0%,100% {background-image: url("webPageImg/cool-background1.gif");}
+                33.33% {background-image: url("webPageImg/cool-background2.gif");}
+                66.66% {background-image: url("webPageImg/cool-background3.gif");}
+            }
+
+
+            .grid-container {
+                display: grid;
+                grid-template-areas:
+                    'services detailPage';
+                width: 1023px;
+                max-height: 543px;
+            }
+
+            .grid-container > div {
+                background-color: white;
+                text-align: center;
+                color: black;
+                font-family: "Times New Roman", Times, serif;
+                font-size: 20px;
+            }
+
+            .container .footer {
+                position: absolute;
+                width: 100%;
+                max-width: 1023px;
+                background-color: #2196F3;
+                color: white;
+                text-align: center;
+                font-family: Arial, Helvetica, sans-seri;
+            }
+            .container .header {
+                position:  relative;
+                width: 100%;
+                max-width: 1023px;
+                background-color: #2196F3;
+                color: white;
+                text-align: center;
+                margin: 0 auto;
+                font-family: Arial, Helvetica, sans-seri;
+            }
+            .item1 .button {
+                position: absolute;
+                top: 32%;
+                left: 15%;
+                right: 25%;
+            }
+            .item1 .button1 {
+                position: absolute;
+                top: 50%;
+                left: 23%;
+                right: 25%;
+            }
+            .item1 .button2 {
+                position: absolute;
+                top: 68%;
+                left: 25%;
+                right: 25%;
+            }
+            .ControlDisplayPage{
+                display: none;
+                padding: 10px;
+            }
+            /*///////////////////////////////////////////////////ScrollerCSS/*/
+            ::-webkit-scrollbar {
+                width: 3px;
+            }
+            ::-webkit-scrollbar-track {
+                box-shadow: inset 0 0 5px grey; 
+                border-radius: 5px;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #cccccc; 
+                border-radius: 2px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #b30000; 
+            }
+        </style>
+        <script type = "text/javascript">
+
+            /*/////////////////////////////////////////////editorScript*/
+            var boolean = 1;
+            function editor() {
+                if (boolean === 0) {
+                    document.getElementById("edit").style.display = "block";
+                    document.getElementById("ControlPage").style.display = "block";
+                    document.getElementById("ControlDisplayPage").style.display = "none";
+                    document.getElementById("Description").setAttribute("contenteditable", "true");
+                    boolean = 1;
+                } else {
+                    document.getElementById("edit").style.display = "none";
+                    document.getElementById("ControlPage").style.display = "none";
+                    document.getElementById("ControlDisplayPage").style.display = "block";
+                    document.getElementById("CompanyNameDisplay").innerHTML = document.getElementById("CompanyName").value;
+                    document.getElementById("DescriptionDisplay").innerHTML = document.getElementById("Description").value;
+                    document.getElementById("ServicesDisplay").innerHTML = document.getElementById("Services").value;
+                    document.getElementById("BookingFeeDisplay1").innerHTML = "Consult fee: R" + (parseFloat(document.getElementById("ConsultFees").value));
+                    document.getElementById("BookingFeeDisplay2").innerHTML = "Transportaion fee: R" + (parseFloat(document.getElementById("TransFees").value));
+                    document.getElementById("Description").setAttribute("contenteditable", "fales");
+                    boolean = 0;
+                }
+            }
+
+        </script>
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    </head>
+    <body class="container" onload = "campanyName()">
+        <div class="header">
+            <div class="topnav">
+                <a class="active" href="#home"><img src="webPageImg/icon.PNG" alt="Market space icon"/></a>
+                <a onclick="return editor()">See Users View</a>
+            </div>
+        </div>  
+        <div class="grid-container" id="HomeWindo">
+            <div class="item1" >
+                <form action="imageUpload" method="post" enctype="multipart/form-data">
+                <img id="img2" src="webPageImg/Services1.jpg" alt="Services images" width="511" height="543"/>
+                <div id="edit">
+                    <div class="button" ><input type="file" name="fname" style='font-size:35px;opacity: 0.6; color: #2196F3'></div>
+                    <div class="button1" ><input type="submit" value="Upload Picture" style='font-size:35px;opacity: 0.6; color: #2196F3'></div>
+                    <button class="button2" style='font-size:35px;opacity: 0.6; color: #2196F3'>Delete Pictures</button>
+                </div>
+                </form>
+            </div>
+            <div class="item2" id="mydiv">
+                <form id="ControlPage" action="ControlPage" method="post" class="ControlPage">
+                    <label for="CompanyName">
+                        <strong>Company Name</strong><input type="hidden" name="Id_code">
+                    </label><br>
+                    <input type="text" id="CompanyName" placeholder="Company Name" name="CompanyName" required ><br>
+                    <label for="Description">
+                        <strong>Business Description</strong>
+                    </label><br>
+                    <textarea id="Description" name="Description" rows="6" cols="60" maxlength ="500" required>Business Description is an important task, clearly describe your business and exactly what it will involve.
+Your business description should explain exactly what your company is all about. note 500 max characters</textarea><br>
+                    <label for="Services">
+                        <strong>Business Services</strong>
+                    </label><br>
+                    <textarea id="Services" name="Services" rows="6" cols="60" maxlength ="500" required>Business Services is an important task, clearly describe your business services what your services are.
+Your business services should explain exactly what your company offers. note 500 max characters</textarea><br>
+                    <label >
+                        <strong>Additional Consulting Fee</strong>
+                    </label><br>
+                    <input type="number" id="ConsultFees" placeholder="Consult fee" name="ConsultFee" required ><br>
+                    <input type="number" id="TransFees" placeholder="Transportion fee" name="TransFee" required ><br>
+                    <label >
+                        <strong>Social Media Links</strong>
+                    </label><br>
+                    <input type="text" id="Facebook" placeholder="Facebook link" name="Facebook"  pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)" ><br>
+                    <input type="text" id="Twitter" placeholder="Twitter link" name="Twitter"  pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)" ><br>
+                    <input type="text" id="Instagram" placeholder="Instagram link" name="Instagram" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)" ><br>
+                    <input type="text" id="TikTok" placeholder="TikTok link" name="TikTok" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)" ><br>   
+                    <input type="text" id="YouTube" placeholder="YouTube link" name="YouTube" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)" ><br>                  
+                    <button type="submit" class="btn">Create Page</button>
+                </form>
+                <div id="ControlDisplayPage" class="ControlDisplayPage">
+                    <h2 id="CompanyNameDisplay"></h2>
+                    <h5 id="DescriptionDisplay" style="height: 100px; width: 480px; word-wrap: break-word; overflow-y: auto" ></h5>
+                    <strong>Services We Offer</strong>
+                    <h6 id="ServicesDisplay" style="height: 50px; width: 480px; word-wrap: break-word; overflow-y: auto" ></h6>
+                    <table style="width:100%">
+                        <tr>
+                            <th id="BookingFeeDisplay1">Consult fee: R20.00 </th>
+                            <th id="BookingFeeDisplay2">Transportion fee: R0.00 </th>
+                    </table><br>
+                    <strong>Follow Our Company on</strong><br>
+                    <a id="facebooklink" href="#"><img src="webPageImg/facebook.png" alt="facebook link" style="opacity: 0.3"/></a>
+                    <a id="twitterlink" href="#"><img src="webPageImg/twitter.png" alt="twitter link" style="opacity: 0.3"/></a>
+                    <a id="instagramlink" href="#"><img src="webPageImg/instagram.png" alt="instagram link" style="opacity: 0.3"/></a>
+                    <a id="tiktoklink" href="#"><img src="webPageImg/tiktok.png" alt="tiktok link" style="opacity: 0.3"/></a>
+                    <a id="youtubelink" href="#"><img src="webPageImg/youtube.png" alt="youtube link" style="opacity: 0.3"/></a><br>
+                    <button type="button" style="width:300px; height: 40px; background-color: #2196F3; color: white; opacity: 0.6">Book an Appointment</button>
+                </div>
+            </div> 
+        </div>
+        <div class="footer">
+            <p>Contact us on +27 11 456 8513 | marketspace@gmail.com  follow us on </p>
+            <a  href="https://www.facebook.com/"><img src="webPageImg/facebook.png" alt="facebook link" style="opacity: 0.3"/></a>
+            <a  href="https://twitter.com/?lang=en"><img src="webPageImg/twitter.png" alt="twitter link" style="opacity: 0.3"/></a>
+            <a  href="https://www.instagram.com/"><img src="webPageImg/instagram.png" alt="instagram link" style="opacity: 0.3"/></a>
+            <a  href="https://www.tiktok.com/"><img src="webPageImg/tiktok.png" alt="tiktok link" style="opacity: 0.3"/></a>
+            <a  href="https://www.youtube.com/"><img src="webPageImg/youtube.png" alt="youtube link" style="opacity: 0.3"/></a>
+        </div>
+    </body>
+</html>
